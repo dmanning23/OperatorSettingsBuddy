@@ -32,14 +32,40 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Source\SettingsComponent.cs">
+      <Link>SettingsComponent.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\SettingsFile.cs">
+      <Link>SettingsFile.cs</Link>
+    </Compile>
+    <Compile Include="..\Source\SettingsScreen.cs">
+      <Link>SettingsScreen.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\externals\FileBuddy\Windows\FileBuddyLib.Windows.csproj">
+      <Project>{9cf5b7ed-4ed9-4fbf-a35c-54945b903298}</Project>
+      <Name>FileBuddyLib.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\HadoukInput\Windows\HadoukInput.Windows.csproj">
+      <Project>{85d723f7-83ef-4c75-82ba-9385d0ac8448}</Project>
+      <Name>HadoukInput.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\MenuBuddy\Windows\MenuBuddy.Windows.csproj">
+      <Project>{e83f9eaa-eb6b-4801-8bef-c602d34ebfd3}</Project>
+      <Name>MenuBuddy.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\externals\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
+      <Project>{7de47032-a904-4c29-bd22-2d235e8d91ba}</Project>
+      <Name>MonoGame.Framework.WindowsGL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

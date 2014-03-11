@@ -22,3 +22,9 @@
 [submodule "externals/EasyStorage"]
 	path = externals/EasyStorage
 	url = git@github.com:dmanning23/EasyStorage.git
+[submodule "externals/Filename"]
+	path = externals/Filename
+	url = git@github.com:dmanning23/Filename.git
+[submodule "externals/MatrixExtensions"]
+	path = externals/MatrixExtensions
+	url = git@github.com:dmanning23/MatrixExtensions.git
