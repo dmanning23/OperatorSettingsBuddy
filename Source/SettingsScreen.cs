@@ -18,20 +18,22 @@ namespace OperatorSettingsBuddy
 		/// <summary>
 		/// menu entry to change the difficulty
 		/// </summary>
-		private readonly MenuEntry _difficulty;
-		public int Difficulty { get; set; }
+		private readonly MenuEntryInt _difficulty;
 
 		/// <summary>
 		/// menu entry to change the num credits to play
 		/// </summary>
-		private readonly MenuEntry _numCredits;
-		public int NumCredits { get; set; }
+		private readonly MenuEntryInt _numCredits;
 
 		/// <summary>
 		/// menu entry to change the attract mode sound on/off
 		/// </summary>
-		private readonly MenuEntry _attractModeSound;
-		public int AttractModeSound { get; set; }
+		private readonly MenuEntryBool _attractModeSound;
+
+		/// <summary>
+		/// the settings file to manipulate
+		/// </summary>
+		private SettingsFile Settings { get; set; }
 
 		#endregion
 
@@ -40,9 +42,11 @@ namespace OperatorSettingsBuddy
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public SettingsScreen()
+		public SettingsScreen(SettingsFile settings)
 			: base("Operator Settings")
 		{
+			Settings = settings;
+
 			//// Create our menu entries.
 			//buttnutsEntry = new MenuEntry(string.Empty);
 
@@ -59,30 +63,21 @@ namespace OperatorSettingsBuddy
 			//MenuEntries.Add(backMenuEntry);
 		}
 
-		/// <summary>
-		/// Fills in the latest values for the options screen menu text.
-		/// </summary>
-		private void SetMenuEntryText()
-		{
-			//buttnutsEntry.Text = string.Format("buttnuts: {0}", currentButtnuts.ToString());
-		}
-
 		#endregion
 
 		#region Handle Input
 
 		/// <summary>
-		/// Event handler for when the buttnuts selection menu entry is selected.
+		/// Handler for when the user has cancelled the menu.
 		/// </summary>
-		private void ButtnutsEntrySelected(object sender, PlayerIndexEventArgs e)
+		protected override void OnCancel(PlayerIndex playerIndex)
 		{
-			////increment the mic
-			//currentButtnuts++;
+			//TODO: on menu exit, save settings
 
-			//SetMenuEntryText();
+			base.OnCancel(playerIndex);
 		}
 
-		//TODO: on menu exit, save settings
+		
 
 		#endregion
 	}
