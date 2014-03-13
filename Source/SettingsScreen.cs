@@ -13,8 +13,6 @@ namespace OperatorSettingsBuddy
 	{
 		#region Fields
 
-		//TODO: create MenuEntryInt and MenuEntryBool
-
 		/// <summary>
 		/// menu entry to change the difficulty
 		/// </summary>

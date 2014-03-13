@@ -79,19 +79,25 @@ namespace OperatorSettingsBuddy
 		/// <param name="rFile"></param>
 		public virtual void SaveSettings(XmlTextWriter rFile)
 		{
-			//TODO: save settings
+			//write the settings element
+			rFile.WriteStartElement("Settings");
 
-			////write the high score table element
-			//rFile.WriteStartElement("highscoretable");
+			//write the difficulty
+			rFile.WriteStartElement("Difficulty");
+			rFile.WriteString(Difficulty.ToString());
+			rFile.WriteEndElement();
 
-			////write out all the lists
-			//foreach (KeyValuePair<string, HighScoreList> entry in HighScoreLists)
-			//{
-			//	// do something with entry.Value or entry.Key
-			//	entry.Value.WriteToXML(rFile);
-			//}
+			//write the num credits
+			rFile.WriteStartElement("NumCredits");
+			rFile.WriteString(NumCredits.ToString());
+			rFile.WriteEndElement();
 
-			//rFile.WriteEndElement();
+			//write the attract mode sound
+			rFile.WriteStartElement("AttractModeSound");
+			rFile.WriteString(AttractModeSound.ToString());
+			rFile.WriteEndElement();
+
+			rFile.WriteEndElement();
 		}
 
 		/// <summary>
@@ -123,47 +129,32 @@ namespace OperatorSettingsBuddy
 		/// <param name="rootNode"></param>
 		public virtual void LoadSettings(XmlNode rootNode)
 		{
-			//TODO: load settings
-
 			//make sure is correct type of node
-			Debug.Assert("highscoretable" == rootNode.Name);
+			Debug.Assert("Settings" == rootNode.Name);
 
-			//read high score lists
+			//Read in child nodes
 			if (rootNode.HasChildNodes)
 			{
-				XmlNode childNode = rootNode.FirstChild;
-				while (childNode != null)
+				for (XmlNode childNode = rootNode.FirstChild;
+				null != childNode;
+				childNode = childNode.NextSibling)
 				{
-					//get the name of this list
-					string ListName = "";
-					XmlNamedNodeMap mapAttributes = childNode.Attributes;
-					for (int i = 0; i < mapAttributes.Count; i++)
+					//what is in this node?
+					string strName = childNode.Name;
+					string strValue = childNode.InnerText;
+
+					if (strName == "Difficulty")
 					{
-						//will only have the name attribute
-						string strName = mapAttributes.Item(i).Name;
-						string strValue = mapAttributes.Item(i).Value;
-						if ("ListName" == strName)
-						{
-							ListName = strValue;
-						}
-						else
-						{
-							//unknwon attribute in the xml file!!!
-							Debug.Assert(false);
-						}
+						Difficulty = Convert.ToInt32(strValue);
 					}
-
-					////find the list from the xml file
-					//Debug.Assert(!String.IsNullOrEmpty(ListName));
-					//HighScoreList rHighScoreList = HighScoreLists[ListName];
-					//Debug.Assert(null != rHighScoreList);
-
-					////create, read, and store a new high score list from this xml node
-					//rHighScoreList.ReadFromXML(childNode);
-					//HighScoreLists[rHighScoreList.Name] = rHighScoreList;
-
-					//next node!
-					childNode = childNode.NextSibling;
+					else if (strName == "NumCredits")
+					{
+						NumCredits = Convert.ToInt32(strValue);
+					}
+					else if (strName == "AttractModeSound")
+					{
+						AttractModeSound = Convert.ToBoolean(strValue);
+					}
 				}
 			}
 		}
