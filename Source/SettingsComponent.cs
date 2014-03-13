@@ -95,7 +95,7 @@ namespace OperatorSettingsBuddy
 		/// <returns></returns>
 		protected virtual SettingsScreen CreateSettingsScreen()
 		{
-			return new SettingsScreen();
+			return new SettingsScreen(Settings);
 		}
 
 		/// <summary>

@@ -16,7 +16,11 @@ namespace OperatorSettingsBuddy
 	{
 		#region Member Variables
 
-		//TODO: add settings
+		public int Difficulty { get; set; }
+
+		public int NumCredits { get; set; }
+
+		public bool AttractModeSound { get; set; }
 
 		#endregion //Member Variables
 

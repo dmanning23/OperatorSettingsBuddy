@@ -30,6 +30,8 @@ namespace OperatorSettingsBuddy
 		/// </summary>
 		private readonly MenuEntryBool _attractModeSound;
 
+		private readonly MenuEntry _doneMenuEntry;
+
 		/// <summary>
 		/// the settings file to manipulate
 		/// </summary>
@@ -47,20 +49,19 @@ namespace OperatorSettingsBuddy
 		{
 			Settings = settings;
 
-			//// Create our menu entries.
-			//buttnutsEntry = new MenuEntry(string.Empty);
+			//Create our menu entries.
+			_difficulty = new MenuEntryInt("Difficulty", Settings.Difficulty);
+			_numCredits = new MenuEntryInt("Credits Per Play", Settings.NumCredits);
+			_attractModeSound = new MenuEntryBool("Attract Mode Sound", Settings.AttractModeSound);
+			_doneMenuEntry = new MenuEntry("Done");
 
-			//SetMenuEntryText();
+			_doneMenuEntry.Selected += OnCancel;
 
-			//var backMenuEntry = new MenuEntry("Done");
-
-			//// Hook up menu event handlers.
-			//buttnutsEntry.Selected += ButtnutsEntrySelected;
-			//backMenuEntry.Selected += OnCancel;
-
-			//// Add entries to the menu.
-			//MenuEntries.Add(buttnutsEntry);
-			//MenuEntries.Add(backMenuEntry);
+			//Add entries to the menu.
+			MenuEntries.Add(_difficulty);
+			MenuEntries.Add(_numCredits);
+			MenuEntries.Add(_attractModeSound);
+			MenuEntries.Add(_doneMenuEntry);
 		}
 
 		#endregion
@@ -72,7 +73,13 @@ namespace OperatorSettingsBuddy
 		/// </summary>
 		protected override void OnCancel(PlayerIndex playerIndex)
 		{
-			//TODO: on menu exit, save settings
+			//update settings object from menu entries
+			Settings.Difficulty = _difficulty.Value;
+			Settings.NumCredits = _numCredits.Value;
+			Settings.AttractModeSound = _attractModeSound.Value;
+
+			//save settings
+			Settings.Save();
 
 			base.OnCancel(playerIndex);
 		}
