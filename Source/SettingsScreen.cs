@@ -48,8 +48,20 @@ namespace OperatorSettingsBuddy
 			Settings = settings;
 
 			//Create our menu entries.
-			_difficulty = new MenuEntryInt("Difficulty", Settings.Difficulty);
-			_numCredits = new MenuEntryInt("Credits Per Play", Settings.NumCredits);
+			_difficulty = new MenuEntryInt("Difficulty", Settings.Difficulty)
+			{
+				Step = 1,
+				Min = 1,
+				Max = 10
+			};
+
+			_numCredits = new MenuEntryInt("Credits Per Play", Settings.NumCredits)
+			{
+				Step = 1,
+				Min = 0,
+				Max = 20
+			};
+
 			_attractModeSound = new MenuEntryBool("Attract Mode Sound", Settings.AttractModeSound);
 			_doneMenuEntry = new MenuEntry("Done");
 
