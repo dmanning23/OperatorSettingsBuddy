@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using FileBuddyLib;
+using InsertCoinBuddy;
 
 namespace OperatorSettingsBuddy
 {
@@ -16,24 +17,47 @@ namespace OperatorSettingsBuddy
 	{
 		#region Member Variables
 
+		int _numCredits = 0;
+
+		#endregion //Member Variables
+
+		#region Properties
+
 		public int Difficulty { get; set; }
 
-		public int NumCredits { get; set; }
+		public int NumCredits 
+		{
+			get
+			{
+				return _numCredits;
+			}
+			set
+			{
+				_numCredits = value;
+				if (null != Credits)
+				{
+					Credits.CoinsPerCredit = value;
+				}
+			}
+		}
 
 		public bool AttractModeSound { get; set; }
 
-		#endregion //Member Variables
+		private ICreditsManager Credits { get; set; }
+
+		#endregion //Properties
 
 		#region Methods
 
 		/// <summary>
 		/// hello standard constructor!
 		/// </summary>
-		public SettingsFile(string folderLocation)
+		public SettingsFile(string folderLocation, ICreditsManager creditManager)
 			: base(folderLocation, "OperatorSettings.xml")
 		{
 			SaveMethod = WriteHighScores;
 			LoadMethod = ReadHighScores;
+			Credits = creditManager;
 		}
 
 		#endregion //Methods

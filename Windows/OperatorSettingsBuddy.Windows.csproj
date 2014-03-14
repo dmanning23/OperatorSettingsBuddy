@@ -62,6 +62,10 @@
       <Project>{85d723f7-83ef-4c75-82ba-9385d0ac8448}</Project>
       <Name>HadoukInput.Windows</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\InsertCoinBuddy\Windows\InsertCoinBuddy.Windows.csproj">
+      <Project>{0cb3b00e-ace5-4a8d-b994-aa99ee0f7a0f}</Project>
+      <Name>InsertCoinBuddy.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MenuBuddy\Windows\MenuBuddy.Windows.csproj">
       <Project>{e83f9eaa-eb6b-4801-8bef-c602d34ebfd3}</Project>
       <Name>MenuBuddy.Windows</Name>

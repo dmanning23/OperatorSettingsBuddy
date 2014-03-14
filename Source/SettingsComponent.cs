@@ -1,4 +1,5 @@
 using MenuBuddy;
+using InsertCoinBuddy;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -35,6 +36,8 @@ namespace OperatorSettingsBuddy
 		/// The name of the settings screen, used to check if one is already displayed
 		/// </summary>
 		private string SettingsScreenName { get; set; }
+
+		
 
 		#endregion //Members
 
@@ -105,7 +108,7 @@ namespace OperatorSettingsBuddy
 		/// <returns></returns>
 		protected virtual SettingsFile CreateSettings(string folder)
 		{
-			return new SettingsFile(folder);
+			return new SettingsFile(folder, (ICreditsManager)Game.Services.GetService(typeof(ICreditsManager)));
 		}
 
 		#endregion //Methods
