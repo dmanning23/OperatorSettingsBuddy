@@ -8,7 +8,7 @@ namespace OperatorSettingsBuddy
 	/// <summary>
 	/// This item is a game component that sits and calculates the average FPS
 	/// </summary>
-	public class SettingsComponent<T> : GameComponent where T : MenuScreen
+	public class SettingsComponent<T> : DrawableGameComponent where T : MenuScreen
 	{
 		#region Members
 
@@ -56,6 +56,8 @@ namespace OperatorSettingsBuddy
 			this.Folder = folder;
 			ScreenManager = screenManager;
 			MenuKey = menuKey;
+
+			Settings = CreateSettings(Folder);
 		}
 
 		/// <summary>
@@ -64,13 +66,19 @@ namespace OperatorSettingsBuddy
 		public override void Initialize()
 		{
 			//load settingsfile
-			Settings = CreateSettings(Folder);
 			Settings.Initialize(Game);
-			Settings.Load();
 
 			//get teh screen name
 			var screen = CreateSettingsScreen();
 			SettingsScreenName = screen.ScreenName;
+
+			base.Initialize();
+		}
+
+		protected override void LoadContent()
+		{
+			Settings.Load();
+			base.LoadContent();
 		}
 
 		/// <summary>
@@ -83,10 +91,11 @@ namespace OperatorSettingsBuddy
 			if (Keyboard.GetState().IsKeyDown(MenuKey))
 			{
 				//check if the menu is already being displayed
-				if (null == ScreenManager.FindScreen(SettingsScreenName))
+				GameScreen screen = ScreenManager.FindScreen(SettingsScreenName);
+				if (null == screen)
 				{
 					//add a settings screen and display it
-					var screen = CreateSettingsScreen();
+					screen = CreateSettingsScreen();
 					ScreenManager.AddScreen(screen, null);
 				}
 			}

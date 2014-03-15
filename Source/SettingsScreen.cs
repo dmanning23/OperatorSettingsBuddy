@@ -94,7 +94,15 @@ namespace OperatorSettingsBuddy
 			base.OnCancel(playerIndex);
 		}
 
-		
+		public override void Draw(GameTime gameTime)
+		{
+			//Draw on a black background
+			ScreenManager.SpriteBatchBegin();
+			ScreenManager.FadeBackBufferToBlack(TransitionAlpha * 2.0f / 3.0f);
+			ScreenManager.SpriteBatchEnd();
+			
+			base.Draw(gameTime);
+		}
 
 		#endregion
 	}
