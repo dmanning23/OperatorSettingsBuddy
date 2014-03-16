@@ -58,6 +58,7 @@ namespace OperatorSettingsBuddy
 			SaveMethod = WriteHighScores;
 			LoadMethod = ReadHighScores;
 			Credits = creditManager;
+			_numCredits = Credits.CoinsPerCredit;
 		}
 
 		#endregion //Methods
