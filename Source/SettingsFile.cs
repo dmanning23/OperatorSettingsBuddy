@@ -41,7 +41,7 @@ namespace OperatorSettingsBuddy
 			}
 		}
 
-		public bool AttractModeSound { get; set; }
+		public static bool AttractModeSound { get; set; }
 
 		private ICreditsManager Credits { get; set; }
 

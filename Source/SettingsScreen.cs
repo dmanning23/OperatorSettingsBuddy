@@ -62,7 +62,7 @@ namespace OperatorSettingsBuddy
 				Max = 20
 			};
 
-			_attractModeSound = new MenuEntryBool("Attract Mode Sound", Settings.AttractModeSound);
+			_attractModeSound = new MenuEntryBool("Attract Mode Sound", SettingsFile.AttractModeSound);
 			_doneMenuEntry = new MenuEntry("Done");
 
 			_doneMenuEntry.Selected += OnCancel;
@@ -86,7 +86,7 @@ namespace OperatorSettingsBuddy
 			//update settings object from menu entries
 			Settings.Difficulty = _difficulty.Value;
 			Settings.NumCredits = _numCredits.Value;
-			Settings.AttractModeSound = _attractModeSound.Value;
+			SettingsFile.AttractModeSound = _attractModeSound.Value;
 
 			//save settings
 			Settings.Save();
