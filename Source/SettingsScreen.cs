@@ -48,7 +48,7 @@ namespace OperatorSettingsBuddy
 			Settings = settings;
 
 			//Create our menu entries.
-			_difficulty = new MenuEntryInt("Difficulty", Settings.Difficulty)
+			_difficulty = new MenuEntryInt("Difficulty", SettingsFile.Difficulty)
 			{
 				Step = 1,
 				Min = 1,
@@ -84,7 +84,7 @@ namespace OperatorSettingsBuddy
 		protected override void OnCancel(PlayerIndex playerIndex)
 		{
 			//update settings object from menu entries
-			Settings.Difficulty = _difficulty.Value;
+			SettingsFile.Difficulty = _difficulty.Value;
 			Settings.NumCredits = _numCredits.Value;
 			SettingsFile.AttractModeSound = _attractModeSound.Value;
 

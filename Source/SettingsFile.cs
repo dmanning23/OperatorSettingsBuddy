@@ -19,11 +19,11 @@ namespace OperatorSettingsBuddy
 
 		int _numCredits = 0;
 
+		private ICreditsManager Credits { get; set; }
+
 		#endregion //Member Variables
 
 		#region Properties
-
-		public int Difficulty { get; set; }
 
 		public int NumCredits 
 		{
@@ -41,9 +41,9 @@ namespace OperatorSettingsBuddy
 			}
 		}
 
-		public static bool AttractModeSound { get; set; }
+		public static int Difficulty { get; set; }
 
-		private ICreditsManager Credits { get; set; }
+		public static bool AttractModeSound { get; set; }
 
 		#endregion //Properties
 
