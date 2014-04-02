@@ -45,6 +45,7 @@ namespace OperatorSettingsBuddy
 		public SettingsScreen(SettingsFile settings)
 			: base("Operator Settings")
 		{
+			IsPopup = true;
 			Settings = settings;
 
 			//Create our menu entries.
