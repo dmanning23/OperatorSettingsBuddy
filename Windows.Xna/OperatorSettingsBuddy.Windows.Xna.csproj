@@ -71,19 +71,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\externals\EasyStorage\Windows.Xna\EasyStorage.Windows.Xna.csproj">
+    <ProjectReference Include="..\..\EasyStorage\Windows.Xna\EasyStorage.Windows.Xna.csproj">
       <Project>{92E7BB8F-4B13-4370-ACA8-D97F22848353}</Project>
       <Name>EasyStorage.Windows.Xna</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\FileBuddy\Windows.Xna\FileBuddy.Windows.Xna.csproj">
+    <ProjectReference Include="..\..\FileBuddy\Windows.Xna\FileBuddy.Windows.Xna.csproj">
       <Project>{D635BAB9-19BA-44D2-A4E8-9B256BCE1676}</Project>
       <Name>FileBuddy.Windows.Xna</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\InsertCoinBuddy\Windows.Xna\InsertCoinBuddy.Windows.Xna.csproj">
+    <ProjectReference Include="..\..\InsertCoinBuddy\Windows.Xna\InsertCoinBuddy.Windows.Xna.csproj">
       <Project>{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}</Project>
       <Name>InsertCoinBuddy.Windows.Xna</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\MenuBuddy\Windows.XNA\MenuBuddy.Windows.XNA.csproj">
+    <ProjectReference Include="..\..\MenuBuddy\Windows.XNA\MenuBuddy.Windows.XNA.csproj">
       <Project>{73C84964-C3F0-41D2-9B76-BB8C88E447F6}</Project>
       <Name>MenuBuddy.Windows.XNA</Name>
     </ProjectReference>
