@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.Windows.XNA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBuddy.Windows.Xna", "..\externals\FileBuddy\Windows.Xna\FileBuddy.Windows.Xna.csproj", "{D635BAB9-19BA-44D2-A4E8-9B256BCE1676}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsertCoinBuddy.Windows.Xna", "..\externals\InsertCoinBuddy\Windows.Xna\InsertCoinBuddy.Windows.Xna.csproj", "{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +93,12 @@ Global
 		{D635BAB9-19BA-44D2-A4E8-9B256BCE1676}.Release|Any CPU.ActiveCfg = Release|x86
 		{D635BAB9-19BA-44D2-A4E8-9B256BCE1676}.Release|x86.ActiveCfg = Release|x86
 		{D635BAB9-19BA-44D2-A4E8-9B256BCE1676}.Release|x86.Build.0 = Release|x86
+		{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}.Debug|x86.ActiveCfg = Debug|x86
+		{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}.Debug|x86.Build.0 = Debug|x86
+		{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}.Release|Any CPU.ActiveCfg = Release|x86
+		{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}.Release|x86.ActiveCfg = Release|x86
+		{37A2FEA0-2F58-4D68-8090-84AC7DCB44DC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
