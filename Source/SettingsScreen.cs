@@ -16,19 +16,19 @@ namespace OperatorSettingsBuddy
 		/// <summary>
 		/// menu entry to change the difficulty
 		/// </summary>
-		private readonly MenuEntryInt _difficulty;
+		private MenuEntryInt _difficulty;
 
 		/// <summary>
 		/// menu entry to change the num credits to play
 		/// </summary>
-		private readonly MenuEntryInt _numCredits;
+		private MenuEntryInt _numCredits;
 
 		/// <summary>
 		/// menu entry to change the attract mode sound on/off
 		/// </summary>
-		private readonly MenuEntryBool _attractModeSound;
+		private MenuEntryBool _attractModeSound;
 
-		private readonly MenuEntry _doneMenuEntry;
+		private MenuEntry _doneMenuEntry;
 
 		/// <summary>
 		/// the settings file to manipulate
@@ -42,10 +42,14 @@ namespace OperatorSettingsBuddy
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public SettingsScreen(SettingsFile settings)
+		public SettingsScreen()
 			: base("Operator Settings")
 		{
 			IsPopup = true;
+		}
+
+		public void Init(SettingsFile settings)
+		{
 			Settings = settings;
 
 			//Create our menu entries.

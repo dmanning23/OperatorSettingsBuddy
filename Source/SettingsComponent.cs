@@ -8,7 +8,7 @@ namespace OperatorSettingsBuddy
 	/// <summary>
 	/// This item is a game component that sits and calculates the average FPS
 	/// </summary>
-	public class SettingsComponent<T> : DrawableGameComponent where T : MenuScreen
+	public class SettingsComponent<T> : DrawableGameComponent where T : SettingsScreen, new()
 	{
 		#region Members
 
@@ -36,8 +36,6 @@ namespace OperatorSettingsBuddy
 		/// The name of the settings screen, used to check if one is already displayed
 		/// </summary>
 		private string SettingsScreenName { get; set; }
-
-		
 
 		#endregion //Members
 
@@ -105,9 +103,11 @@ namespace OperatorSettingsBuddy
 		/// factory method to create the correct settings screen
 		/// </summary>
 		/// <returns></returns>
-		protected virtual SettingsScreen CreateSettingsScreen()
+		private SettingsScreen CreateSettingsScreen()
 		{
-			return new SettingsScreen(Settings);
+			var screen = new T();
+			screen.Init(Settings);
+			return screen;
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace OperatorSettingsBuddy
 		/// </summary>
 		/// <param name="folder"></param>
 		/// <returns></returns>
-		protected virtual SettingsFile CreateSettings(string folder)
+		private SettingsFile CreateSettings(string folder)
 		{
 			return new SettingsFile(folder, (ICreditsManager)Game.Services.GetService(typeof(ICreditsManager)));
 		}
