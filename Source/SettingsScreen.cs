@@ -28,6 +28,11 @@ namespace OperatorSettingsBuddy
 		/// </summary>
 		private MenuEntryBool _attractModeSound;
 
+		/// <summary>
+		/// menu entry to change the attract mode music on/off
+		/// </summary>
+		private MenuEntryBool _attractModeMusic;
+
 		private MenuEntry _doneMenuEntry;
 
 		/// <summary>
@@ -57,18 +62,32 @@ namespace OperatorSettingsBuddy
 			{
 				Step = 1,
 				Min = 1,
-				Max = 10
+				Max = 10,
+				SizeMultiplier = 0.6f
 			};
 
 			_numCredits = new MenuEntryInt("Credits Per Play", Settings.NumCredits)
 			{
 				Step = 1,
 				Min = 0,
-				Max = 20
+				Max = 20,
+				SizeMultiplier = 0.6f
 			};
 
-			_attractModeSound = new MenuEntryBool("Attract Mode Sound", SettingsFile.AttractModeSound);
-			_doneMenuEntry = new MenuEntry("Done");
+			_attractModeSound = new MenuEntryBool("Attract Mode Sound", SettingsFile.AttractModeSound)
+			{
+				SizeMultiplier = 0.6f
+			};
+			
+			_attractModeMusic = new MenuEntryBool("Attract Mode Music", SettingsFile.AttractModeMusic)
+			{
+				SizeMultiplier = 0.6f
+			};
+
+			_doneMenuEntry = new MenuEntry("Done")
+			{
+				SizeMultiplier = 0.6f
+			};
 
 			_doneMenuEntry.Selected += OnCancel;
 
@@ -76,6 +95,7 @@ namespace OperatorSettingsBuddy
 			MenuEntries.Add(_difficulty);
 			MenuEntries.Add(_numCredits);
 			MenuEntries.Add(_attractModeSound);
+			MenuEntries.Add(_attractModeMusic);
 			MenuEntries.Add(_doneMenuEntry);
 		}
 
@@ -92,6 +112,7 @@ namespace OperatorSettingsBuddy
 			SettingsFile.Difficulty = _difficulty.Value;
 			Settings.NumCredits = _numCredits.Value;
 			SettingsFile.AttractModeSound = _attractModeSound.Value;
+			SettingsFile.AttractModeMusic = _attractModeMusic.Value;
 
 			//save settings
 			Settings.Save();

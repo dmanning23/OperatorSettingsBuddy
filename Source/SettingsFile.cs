@@ -17,6 +17,9 @@ namespace OperatorSettingsBuddy
 	{
 		#region Member Variables
 
+		/// <summary>
+		/// Number of credits required to start the game
+		/// </summary>
 		int _numCredits = 0;
 
 		private ICreditsManager Credits { get; set; }
@@ -44,6 +47,8 @@ namespace OperatorSettingsBuddy
 		public static int Difficulty { get; set; }
 
 		public static bool AttractModeSound { get; set; }
+
+		public static bool AttractModeMusic { get; set; }
 
 		#endregion //Properties
 
@@ -122,6 +127,11 @@ namespace OperatorSettingsBuddy
 			rFile.WriteString(AttractModeSound.ToString());
 			rFile.WriteEndElement();
 
+			//write the attract mode sound
+			rFile.WriteStartElement("AttractModeMusic");
+			rFile.WriteString(AttractModeMusic.ToString());
+			rFile.WriteEndElement();
+
 			rFile.WriteEndElement();
 		}
 
@@ -179,6 +189,10 @@ namespace OperatorSettingsBuddy
 					else if (strName == "AttractModeSound")
 					{
 						AttractModeSound = Convert.ToBoolean(strValue);
+					}
+					else if (strName == "AttractModeMusic")
+					{
+						AttractModeMusic = Convert.ToBoolean(strValue);
 					}
 				}
 			}
