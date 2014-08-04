@@ -33,6 +33,11 @@ namespace OperatorSettingsBuddy
 		protected Keys MenuKey { get; set; }
 
 		/// <summary>
+		/// the button to press to bring up the menu screen
+		/// </summary>
+		protected Buttons MenuButton { get; set; }
+
+		/// <summary>
 		/// The name of the settings screen, used to check if one is already displayed
 		/// </summary>
 		private string SettingsScreenName { get; set; }
@@ -48,12 +53,17 @@ namespace OperatorSettingsBuddy
 		/// <param name="screenManager"></param>
 		/// <param name="folder">location to store the settings file</param>
 		/// <param name="menuKey">the key to press to bring up the menu screen</param>
-		public SettingsComponent(Game game, ScreenManager screenManager, string folder, Keys menuKey)
+		public SettingsComponent(Game game, 
+			ScreenManager screenManager, 
+			string folder, 
+			Keys menuKey,
+			Buttons menuButton)
 			: base(game)
 		{
 			this.Folder = folder;
 			ScreenManager = screenManager;
 			MenuKey = menuKey;
+			MenuButton = menuButton;
 
 			Settings = CreateSettings(Folder);
 		}
@@ -86,7 +96,7 @@ namespace OperatorSettingsBuddy
 		public override void Update(GameTime gameTime)
 		{
 			//check for magic button press to load settingsscreen
-			if (Keyboard.GetState().IsKeyDown(MenuKey))
+			if (ScreenRequest())
 			{
 				//check if the menu is already being displayed
 				GameScreen screen = ScreenManager.FindScreen(SettingsScreenName);
@@ -97,6 +107,16 @@ namespace OperatorSettingsBuddy
 					ScreenManager.AddScreen(screen, null);
 				}
 			}
+		}
+
+		/// <summary>
+		/// Check if the player tried to pop up the operator screen
+		/// </summary>
+		/// <returns></returns>
+		private bool ScreenRequest()
+		{
+			return (Keyboard.GetState().IsKeyDown(MenuKey) ||
+				GamePad.GetState(PlayerIndex.One).IsButtonDown(MenuButton));
 		}
 
 		/// <summary>
