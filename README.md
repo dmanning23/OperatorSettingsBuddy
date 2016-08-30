@@ -1,4 +1,3 @@
-OperatorSettingsBuddy
-=====================
+This library is deprecated and has been rolled into the InsertCoinBuddy:
 
-This thing helps implement a secret "operator settings" menu for arcade games built with Xna/MonoGame
+https://github.com/dmanning23/InsertCoinBuddy
